@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "functions.php";
+echo ' <a href="index.php">SeconTal</a> <br>';
 header('Content-Type: text/html; charset=utf-8');
 $m=getTovarAll();
 echo 'Привіт, ' . $_SESSION["login"];
@@ -73,6 +74,8 @@ if(isset($_POST["submit2"])) {
     {
         delBuy($_SESSION["id"],$b1[$i]);
     }
+    header("Location:/corsina.php");
+    exit;
 }
 //print_r($b1);
 ?>

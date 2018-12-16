@@ -3,6 +3,7 @@ session_start();
 require_once "functions.php";
 $DbName="login";
 $m=getTovarAll();
+echo ' <a href="index.php">SeconTal</a> <br>';
 header('Content-Type: text/html; charset=utf-8');
 if(!isset($_SESSION["login"])) {
     echo '<a href="reg.php">Зареєструватись</a> ';

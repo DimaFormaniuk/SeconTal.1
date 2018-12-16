@@ -34,7 +34,7 @@ if(isset($_POST["submit"])) {
     for ($i = 0; $i < $k; $i++) {
         if ($lg[$i]["login"] == $name && $lg[$i]["password"] == $pas) {
             $tr = true;
-            echo "++++" . $i . "<br>";
+            //echo "++++" . $i . "<br>";
             $j = $i;
             break;
         }

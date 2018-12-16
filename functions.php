@@ -148,6 +148,30 @@ function DeleteTovar($id)
     $mysqli->query("DELETE FROM `secontal`.`tovar` WHERE `tovar`.`id` ='$id';");
     closeDB();
 }
+//INSERT INTO `secontal`.`zamovlena` (`id` ,`idpoc` ,`idtov` ,`name` ,`adres` , `phone`)VALUES (NULL , '15', '20', 'Formaniuk', 'universete', '380995544124');
+function pushZamov($idpoc,$idtov,$idprod,$name,$adres,$phone)
+{
+    global $mysqli;
+    connectDB();
+    $mysqli->query("INSERT INTO `secontal`.`zamovlena` (`id` ,`idpoc` ,`idtov`,`idprod` ,`name` ,`adres` , `phone`) VALUES (NULL , '$idpoc', '$idtov', '$idprod', '$name', '$adres', '$phone');");
+    closeDB();
+    delBuy($idpoc,$idtov);
+}
+function getZamov()
+{
+    global $mysqli;
+    connectDB();
+    $result = $mysqli->query("SELECT * FROM `zamovlena`;");
+    closeDB();
+    return resultToArray($result);
+}
+function ZamovTrue($id,$stat)
+{
+    global $mysqli;
+    connectDB();
+    $mysqli->query("UPDATE `secontal`.`zamovlena` SET `status` = '$stat' WHERE `zamovlena`.`id` ='$id';");
+    closeDB();
+}
 function resultToArray($result)
 {
     $array = array();

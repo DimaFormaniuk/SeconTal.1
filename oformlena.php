@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "functions.php";
+echo ' <a href="index.php">SeconTal</a> <br>';
 header('Content-Type: text/html; charset=utf-8');
 echo 'Привіт, ' . $_SESSION["login"];
 echo ' <a href="exit.php">Вихiд</a> ';
@@ -38,10 +39,13 @@ for($i=0;$i<count($b1);$i++)
 </html>
 <?php
 if(isset($_POST["submit"])) {
-    $r="[]";
-    $s=$_POST["name"].$r.$_POST["name1"].$r.$_POST["name2"].$r.$sum;
-
-header("Location:/index.php".$s);
-exit;
+    $r = "[]";
+    $s = $_POST["name"] . $r . $_POST["name1"] . $r . $_POST["name2"] . $r . $sum;
+    for ($i = 0; $i < count($b1); $i++) {
+        $m = getTovarId($b1[$i]);
+        pushZamov($_SESSION["id"], $m[0]["id"], $m[0]["idadd"], $_POST["name"], $_POST["name1"], $_POST["name2"]);
+    }
+    header("Location:/index.php");
+    exit;
 }
 ?>
